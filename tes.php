@@ -154,6 +154,17 @@ $kosong = ['a'];
 //    echo $value . PHP_EOL;
 // }
 
-if (empty($kosong)) {
-   echo "ya";
+// echo $papan[0][1];
+
+
+$apa = $tes[18] ?? false;
+
+// if ($apa) {
+//    echo "ya";
+// } else {
+//    echo "tidak";
+// }
+
+foreach (range(0, 17) as $value) {
+   echo $value . PHP_EOL;
 }

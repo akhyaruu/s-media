@@ -42,12 +42,72 @@ class PuzzleKata
          }
       }
 
-      return $idxSatu;
+      $sementara = $this->plusMove($idxSatu, $arrKata, $kata);
+
+
+      return $sementara;
+   }
+
+
+
+   private function plusMove($idxSatu, $arrKata, $kata)
+   {
+      // $kataBawah = $this->papan[$idxValue[0]][$idxValue[1]];
+
+      $indexHasil = [];
+
+      foreach ($idxSatu as $key => $idxValue) {
+
+         // $moveBawah = $idxValue[0] + 1;
+         // $moveAtas = $idxValue[0] - 1;
+         // $moveKiri = $idxValue[1] - 1;
+         // $moveKanan = $idxValue[1] + 1;
+
+         // $cekBawah = $this->papan[$moveBawah][$idxValue[1]] ?? false;
+         // if ($cekBawah) {
+         //    for ($i=0; $i < count($arrKata); $i++) { 
+         //       $sentence = $this->papan[$idxValue[0]][$idxValue[1]] . $cekBawah;
+         //       if (str_contains($kata, $sentence)) {
+         //          $kataBawah = $kataBawah . $cekBawah;
+         //       }
+         //    }
+         // }
+
+
+
+         // -- baru
+
+         $indexKata = [[$idxValue[1], $idxValue[0]]];
+
+         for ($i = 1; $i <= count($arrKata); $i++) {
+
+            $moveBawah = $idxValue[0] + $i;
+            $moveAtas = $idxValue[0] - $i;
+            $moveKiri = $idxValue[1] - $i;
+            $moveKanan = $idxValue[1] + $i;
+
+            $cekBawah = $this->papan[$moveBawah][$idxValue[1]] ?? false;
+            if ($cekBawah) {
+               $sentence = $this->papan[$idxValue[0]][$idxValue[1]] . $cekBawah;
+               if (strpos($kata, $sentence) !== false) {
+                  array_push($indexKata, [$idxValue[1], $moveBawah]);
+                  if ($kata == $sentence) {
+                     break;
+                  }
+               }
+            }
+         }
+
+         $indexHasil = $indexKata;
+      }
+
+      return $indexHasil;
    }
 }
 
 $puzzle = new PuzzleKata();
 // mengembalikan column, row [[4,1], [5,2], [6,3], [7,4], [8,5], [9,6], [10,7], [11,8], [12,9]]
-$hasil = $puzzle->cariKata('a');
+$hasil = $puzzle->cariKata('king');
 // echo $hasil;
+// print_r($hasil[12][0]);
 print_r($hasil);

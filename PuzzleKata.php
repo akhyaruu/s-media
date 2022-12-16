@@ -1,5 +1,7 @@
 <?php
 
+// YANG INI BELUM SELESAI
+
 class PuzzleKata
 {
    private $papan = [

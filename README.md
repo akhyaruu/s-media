@@ -6,6 +6,9 @@ Untuk file jawaban pada tiap soal adalah sebagaimana berikut:
 # soal nomor 1
 Klasemen.php
 
-#soal nomor 2
+# soal nomor 2
+PuzzleKata.php
 
+# soal nomor 3
+Biner.php
 ```
